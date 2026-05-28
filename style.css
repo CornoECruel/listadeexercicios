@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f8fafc;
+    --js-yellow: #f7df1e;
+    --accent-blue: #f83882;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    animation: fadeInDown 1s ease;
+}
+
+header h1 { 
+    font-size: 3rem; 
+    font-weight: 800; 
+    margin-bottom: 0.5rem; 
+}
+
+header h1 span { 
+    color: var(--js-yellow); 
+}
+
+header p { 
+    font-size: 1.2rem; 
+    color: #94a3b8; 
+    font-weight: 300; 
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    animation: fadeInUp 1s ease;
+}
+
+.icon { 
+    font-size: 3.5rem; 
+    margin-bottom: 1.5rem; 
+}
+
+.card h2 { 
+    font-size: 1.5rem; 
+    margin-bottom: 1rem; 
+    color: var(--accent-blue); 
+}
+
+.card p { 
+    font-size: 0.95rem; 
+    color: #cbd5e1; 
+    line-height: 1.6; 
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+    background-color: var(--js-yellow);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(247, 223, 30, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(247, 223, 30, 0.1);
+}
+
+.card:hover::before { 
+    transform: scaleX(1); 
+}
+
+.btn-executar {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    background-color: #2563eb;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    width: 100%;
+    max-width: 260px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+
+.btn-executar:hover {
+    background-color: var(--js-yellow) !important; 
+    color: #0f172a !important;
+    transform: scale(1.03);
+}
+
+
+footer { 
+    text-align: center; 
+    padding: 2rem; 
+    color: #64748b; 
+    font-size: 0.9rem; 
+}
+
+footer strong { 
+    color: var(--js-yellow); 
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; animation-fill-mode: both; }
+.card:nth-child(2) { animation-delay: 0.3s; animation-fill-mode: both; }
+.card:nth-child(3) { animation-delay: 0.5s; animation-fill-mode: both; }
+.card:nth-child(4) { animation-delay: 0.7s; animation-fill-mode: both; }
+.card:nth-child(5) { animation-delay: 0.9s; animation-fill-mode: both; }
+
+
+
+/* ==========================================================================
+   6. ESTILOS EXCLUSIVOS DO JOGO DA VELHA (ISOLADOS E CORRIGIDOS)
+   ========================================================================== */
+#tabuleiro {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2); 
+    margin: 0 auto;
+    display: inline-block; /* Garante que o tabuleiro não mude de tamanho */
+}
+
+/* Altera apenas as propriedades dos botões de dentro do tabuleiro do jogo */
+#tabuleiro button {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    background-color: #262626;
+    border: 2px solid #00ffcc;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#tabuleiro button:hover {
+    background-color: #333;
+    box-shadow: 0 0 15px #00ffcc;
+    transform: scale(1.05);
+}
+
+/* CORREÇÃO DO BOTÃO DE RESET: Limitando o tamanho e centralizando */
+#btn-reset {
+    width: 100%;
+    max-width: 200px;                  /* NÃO deixa ele esticar infinito mais */
+    height: auto;
+    padding: 12px 20px;
+    margin: 20px auto 0 auto;          /* O 'auto' nas laterais centraliza o botão */
+    font-size: 1rem;
+    display: block;                    /* Transforma em bloco para aceitar margem auto */
+    background-color: #262626;
+    border: 2px solid #00ffcc;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+#btn-reset:hover {
+    background-color: #333;
+    box-shadow: 0 0 15px #00ffcc;
+    transform: scale(1.05);
+}
+
+/* CORREÇÃO DO STATUS: Centralizado e arrumado */
+#status {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px #00ffcc;
+    color: #00ffcc;
+    text-align: center;                /* Força o texto a ficar no meio */
+    width: 100%;
+    display: block;
+}
